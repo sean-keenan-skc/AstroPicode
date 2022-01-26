@@ -1,0 +1,10 @@
+from picamera import PiCamera
+from time import sleep
+from orbit import ISS
+import timedef take_photos():
+    camera = PiCamera()
+    camera.resolution = (2592, 1944)    for i in range(3*55):
+        location = ISS.coordinates()
+        e = time.time()
+        camera.capture(f’image_{i:03d}_{e}_{location}.jpg’)
+        sleep(60)take_photos()
